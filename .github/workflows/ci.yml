@@ -1,0 +1,23 @@
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Get CMake
+        uses: lukka/get-cmake@latest
+      
+      - name: Prepare directory
+        run: rm -rf hw1/build | mkdir hw1/build
+        shell: bash
+      
+      - name: CMake
+        run: cmake -B hw1/build/ -S hw1/ | cmake --build hw1/
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          path: hw1/build/hw1
