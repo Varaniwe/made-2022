@@ -1,0 +1,45 @@
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install stuff
+        run: sudo apt update -y && sudo apt install -y libgtest-dev clang-tidy cppcheck valgrind python3-pip lcov && pip install cpplint
+
+      - name: Get CMake
+        uses: lukka/get-cmake@latest
+      
+      - name: Prepare directory
+        run: rm -rf hw1/build | mkdir hw1/build
+        shell: bash
+      
+      - name: Linters
+        run: hw1/linters/run.sh
+      
+      - name: CMake
+        run: cmake -B hw1/build/ -S hw1/
+      
+      - name: CMake Build
+        run: cmake --build hw1/build/
+
+      - name: lcov
+        run: |
+          pushd hw1/build && \
+             lcov -t "test/test_hw1" -o coverage.info -c -d weather/ && \
+             genhtml -o report coverage.info && \
+             popd
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          path: hw1/build/hw1
+
+      #- name: Valgrind
+      #  run: valgrind --tool=memcheck --leak-check=yes hw1/build/hw1 hw1/input
+
+      - name: Sanitizer
+        run: hw1/build/hw1 hw1/input
