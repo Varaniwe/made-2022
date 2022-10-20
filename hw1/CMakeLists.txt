@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(hw1 VERSION 0.1.0)
 
-set(USE_SANITIZER 0)
+set(USE_SANITIZER 1)
 if(USE_SANITIZER)
 set(SANITIZER_FLAGS ${SANITIZER_FLAGS} "-fsanitize=address,undefined -fno-sanitize-recover=all -fsanitize-undefined-trap-on-error")
 else()

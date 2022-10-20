@@ -31,8 +31,8 @@ jobs:
         with:
           path: hw1/build/hw1
 
-      - name: Valgrind
-        run: valgrind --tool=memcheck --leak-check=yes hw1/build/hw1 hw1/input
+      #- name: Valgrind
+      #  run: valgrind --tool=memcheck --leak-check=yes hw1/build/hw1 hw1/input
 
       - name: Sanitizer
         run: hw1/build/hw1 hw1/input
