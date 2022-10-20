@@ -18,7 +18,10 @@ jobs:
         shell: bash
       
       - name: CMake
-        run: cmake -B hw1/build/ -S hw1/ | cmake --build hw1/
+        run: cmake -B hw1/build/ -S hw1/
+      
+      - name: CMake Build
+        run: cmake --build hw1/build/
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
