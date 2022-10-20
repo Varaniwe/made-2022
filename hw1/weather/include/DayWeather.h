@@ -9,4 +9,4 @@ typedef struct DayWeatherInfo {
 
 int getValuesFromLine(char *line, DayWeatherInfo *dwi);
 
-#endif // DAY_WEATHER_H
+#endif  // DAY_WEATHER_H

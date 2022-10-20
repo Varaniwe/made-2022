@@ -5,4 +5,4 @@
 #define WEATHER_ERROR (1)
 #define WEATHER_FAILED(x) ((x) != WEATHER_SUCCESS)
 
-#endif // WEATHER_STATUS_H
+#endif  // WEATHER_STATUS_H

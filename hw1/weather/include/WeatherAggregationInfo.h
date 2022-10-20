@@ -16,4 +16,4 @@ int parseWeather(const char *filename, WeatherAggregationInfo *out);
 void printAggregated(const WeatherAggregationInfo *aggregated);
 int calculateAggregated(const DayWeatherInfo *values, size_t valuesCount, WeatherAggregationInfo *out);
 
-#endif // WEATHER_AGGREGATION_INFO_H
+#endif  // WEATHER_AGGREGATION_INFO_H

@@ -18,7 +18,7 @@ int getValuesFromLine(char *line, DayWeatherInfo *dwi) {
         printf("Line is null\n");
         return WEATHER_ERROR;
     }
-    
+
     char *startPtr = strtok(line, ";");
     int values[QUANTITY_COUNT];
     memset(values, 0, sizeof(values));
@@ -33,7 +33,7 @@ int getValuesFromLine(char *line, DayWeatherInfo *dwi) {
         char *endPtr = NULL;
         long parsedValue = strtol(startPtr, &endPtr, 10);
         if (startPtr != endPtr) {
-            // TODO: check overflow?
+            // TODO(varaniwe): check overflow?
             values[quantity] = parsedValue;
         } else {
             printf("Cannot get value %s\n", startPtr);

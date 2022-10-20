@@ -12,7 +12,7 @@ void printAggregated(const WeatherAggregationInfo *aggregated) {
     if (aggregated == NULL) {
         return;
     }
-    
+
     printf("Tmin=%d, Tmax=%d, Tavg=%f, Psum=%llu\n", aggregated->minTemperature, aggregated->maxTemperature,
      aggregated->avgTemperature, aggregated->totalPrecipitation);
 }
