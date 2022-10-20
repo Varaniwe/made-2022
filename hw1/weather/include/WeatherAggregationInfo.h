@@ -9,7 +9,7 @@ typedef struct WeatherAggregationInfo {
     unsigned long long totalPrecipitation;
     int minTemperature;
     int maxTemperature;
-    int avgTemperature;
+    float avgTemperature;
 } WeatherAggregationInfo;
 
 int parseWeather(const char *filename, WeatherAggregationInfo *out);

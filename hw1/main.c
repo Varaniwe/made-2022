@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "WeatherStatus.h"
-#include "WeatherAggregationInfo.h"
+#include "weather/include/WeatherStatus.h"
+#include "weather/include/WeatherAggregationInfo.h"
 
 void printHelp() {
         printf("Usage:\n");
@@ -18,7 +18,8 @@ int main(int argc, char *argv[]) {
         return WEATHER_ERROR;
     }
 
-    WeatherAggregationInfo aggregated = {};
+    WeatherAggregationInfo aggregated;
+    memset(&aggregated, 0, sizeof(aggregated));
     if (WEATHER_FAILED(parseWeather(argv[1], &aggregated))) {
         return WEATHER_ERROR;
     }

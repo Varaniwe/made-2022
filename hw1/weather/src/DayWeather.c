@@ -15,12 +15,13 @@ typedef enum {
 
 int getValuesFromLine(char *line, DayWeatherInfo *dwi) {
     if (line == NULL) {
-            printf("Line is null\n");
-            return WEATHER_ERROR;
+        printf("Line is null\n");
+        return WEATHER_ERROR;
     }
     
     char *startPtr = strtok(line, ";");
-    int values[QUANTITY_COUNT] = {};
+    int values[QUANTITY_COUNT];
+    memset(values, 0, sizeof(values));
 
     int quantity = TEMPERATURE;
     while (startPtr != NULL) {

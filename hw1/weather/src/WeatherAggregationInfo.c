@@ -13,7 +13,7 @@ void printAggregated(const WeatherAggregationInfo *aggregated) {
         return;
     }
     
-    printf("Tmin=%d, Tmax=%d, Tavg=%d, Psum=%llu\n", aggregated->minTemperature, aggregated->maxTemperature,
+    printf("Tmin=%d, Tmax=%d, Tavg=%f, Psum=%llu\n", aggregated->minTemperature, aggregated->maxTemperature,
      aggregated->avgTemperature, aggregated->totalPrecipitation);
 }
 
@@ -46,7 +46,7 @@ int parseWeather(const char *filename, WeatherAggregationInfo *out) {
         }
 
         if (WEATHER_FAILED(getValuesFromLine(line, days + linesCount))) {
-            printf("Some error on line %d\n", linesCount + 1);
+            printf("Some error on line %ld\n", linesCount + 1);
             haveErrors = 1;
             break;
         }
@@ -72,7 +72,7 @@ int calculateAggregated(const DayWeatherInfo *values, size_t valuesCount, Weathe
         return WEATHER_ERROR;
     }
 
-    memset(out, sizeof(WeatherAggregationInfo), 0);
+    memset(out, 0, sizeof(WeatherAggregationInfo));
 
     if (valuesCount == 0) {
         printf("WARNING: Values count is zero\n");
@@ -96,7 +96,7 @@ int calculateAggregated(const DayWeatherInfo *values, size_t valuesCount, Weathe
 
     out->minTemperature = minTemperature;
     out->maxTemperature = maxTemperature;
-    out->avgTemperature = (int)(sumTemperature / valuesCount);
+    out->avgTemperature = (float)(sumTemperature / (float)valuesCount);
     out->totalPrecipitation = sumPrecipitation;
 
     return WEATHER_SUCCESS;
