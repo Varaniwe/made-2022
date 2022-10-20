@@ -17,6 +17,9 @@ jobs:
         run: rm -rf hw1/build | mkdir hw1/build
         shell: bash
       
+      - name: Linters
+        run: hw1/linters/run.sh
+      
       - name: CMake
         run: cmake -B hw1/build/ -S hw1/
       
