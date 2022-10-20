@@ -12,14 +12,13 @@ function check_log() {
     echo "$LOG"
     if echo "$LOG" | grep -q -E "${2}"
     then
-        echo huy
         exit 1
     fi
 
-    if [ $STATUS -ne 0 ]
-    then
-        exit $STATUS
-    fi
+    #if [ $STATUS -ne 0 ]
+    #then
+        #exit $STATUS
+    #fi
 }
 
 print_header "RUN cppcheck"
