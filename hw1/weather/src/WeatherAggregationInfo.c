@@ -46,7 +46,7 @@ int parseWeather(const char *filename, WeatherAggregationInfo *out) {
         }
 
         if (WEATHER_FAILED(getValuesFromLine(line, days + linesCount))) {
-            printf("Some error on line %ld\n", linesCount + 1);
+            printf("Some error on line %zu\n", linesCount + 1);
             haveErrors = 1;
             break;
         }
@@ -78,9 +78,9 @@ int calculateAggregated(const DayWeatherInfo *values, size_t valuesCount, Weathe
         printf("WARNING: Values count is zero\n");
         return WEATHER_SUCCESS;
     }
-    
-    int minTemperature = values[0].temperature;
-    int maxTemperature = values[0].temperature;
+    int initialValue = values[0].temperature;
+    int minTemperature = initialValue;
+    int maxTemperature = initialValue;
     long long sumTemperature = 0;
     long long sumPrecipitation = 0;
     for (size_t i = 0; i < valuesCount; ++i) {
