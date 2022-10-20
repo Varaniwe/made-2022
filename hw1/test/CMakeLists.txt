@@ -11,7 +11,7 @@ find_package(GTest REQUIRED)
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${WEATHER_INCLUDE_DIRS})
-target_link_libraries(${PROJECT_NAME} PUBLIC ${WEATHER_LIBRARY} GTest::gtest_main)
+target_link_libraries(${PROJECT_NAME} PUBLIC ${WEATHER_LIBRARY} GTest::gtest_main ${SANITIZER_FLAGS})
 
 add_test(test_name test_hw1)
 add_custom_command(TARGET ${PROJECT_NAME}
