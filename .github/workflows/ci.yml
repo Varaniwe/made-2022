@@ -26,6 +26,9 @@ jobs:
       - name: CMake Build
         run: cmake --build hw1/build/
 
+      - name: lcov
+        run: lcov -t "hw1/build/test/test_hw1" -o hw1/build/coverage.info -c -d hw1/weather/ && genhtml -o report hw1/build/coverage.info       
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
