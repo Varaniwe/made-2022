@@ -27,7 +27,8 @@ jobs:
         run: cmake --build hw1/build/
 
       - name: lcov
-        run: pushd hw1/build && \
+        run: |
+          pushd hw1/build && \
              lcov -t "test/test_hw1" -o coverage.info -c -d weather/ && \
              genhtml -o report coverage.info && \
              popd
